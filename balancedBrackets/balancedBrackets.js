@@ -43,19 +43,21 @@
       stack.push(char);
     // if char is a closing bracket
     } else if (char === ')' || char === '}' || char === ']') {
-        // last open bracket/paren on the stack
-        let lastOpenPair = stack.pop();
-        // return false if the closing pair doesn't
-        // match the last open brack/paren
-        if (pairs[lastOpenPair] !== char) {
-          return false;
-        }
+      
+      if (stack.length === 0) return false;
+      // last open bracket/paren on the stack
+      let lastOpenPair = stack.pop();
+      // return false if the closing pair doesn't
+      // match the last open brack/paren
+      if (pairs[lastOpenPair] !== char) {
+        return false;
+      }
     } 
   } 
   // if any brackets remain, return false
   return stack.length === 0;
 };
 
-console.log(balancedParens('[](){}')); //true
-console.log(balancedParens(' var wow  = { yo: thisIsAwesome() }')); //true
-console.log(balancedParens(' var hubble = function() { telescopes.awesome();')); //false
+//console.log(balancedParens('[](){}')); //true
+//console.log(balancedParens(' var wow  = { yo: thisIsAwesome() }')); //true
+//console.log(balancedParens(' var hubble = function() {} telescopes.awesome();')); //false
