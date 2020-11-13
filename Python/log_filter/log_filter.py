@@ -17,7 +17,6 @@ def get_version(app_name, log_file):
   """
   Given an app name and log file, return the version of the app that is running
   """
-  version = None
   versions = []
 
   # iterate over log file to find latest version
