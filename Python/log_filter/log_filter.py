@@ -23,6 +23,7 @@ def get_version(app_name, log_file):
   for entry in log_file:
     if (entry.split(' ')[1] == app_name and entry.split(' ')[2] != '__rollback__'):
       versions.append(entry.split(' ')[2])
+    
     if (entry.split(' ')[1] == app_name and entry.split(' ')[2] == '__rollback__'):
       versions.pop()
   
@@ -35,10 +36,13 @@ def toepoch(str):
   - Converts datetime to seconds since 1 Jan 1970
   - Assume this function is already provided if needed
   """
+  sec_since_1970 = 0
+
+  return sec_since_1970
 
 # Testing
 app_name1 = 'app1' 
-app_name3 = 'app3' 
+app_name3 = 'app3' # expected: 'version2'
 
 log_file = ['Apr-3-2020-10:15 app1 version1', 
             'Apr-3-2020-16:45 app1 version2',
@@ -47,5 +51,5 @@ log_file = ['Apr-3-2020-10:15 app1 version1',
             'Jun-5-2020-10:16 app3 version1',
             'Jun-10-2020-12:16 app3 version2']
 
-print(get_version(app_name1, log_file))  #expected: 'version1'
-print(get_version(app_name3, log_file))  #expected: 'version2'
+print(get_version(app_name1, log_file)) #expected: 'version1'
+print(get_version(app_name3, log_file)) #expected: 'version2'
