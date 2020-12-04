@@ -9,6 +9,7 @@ Input: [141, 1, 17, -7, -17, -27, 18, 541, 8, 7, 7]
 Output: [18, 141, 541]
 """
 
+# O(n) time | O(1) space
 def largest_nums(array):
 	largest = [float('-inf'), float('-inf'), float('-inf')]
 	
