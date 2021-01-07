@@ -13,10 +13,10 @@ function firstDuplicate(a) {
 
   // iterate through the array
   for (let elem of a) {
-      if (nums[elem] === 0) {
+      if (nums[elem]) {
           return elem;
       } else {
-          nums[elem] = 0;
+          nums[elem] = 1;
       }
   }
   return -1;
