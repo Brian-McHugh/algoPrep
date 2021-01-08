@@ -1,7 +1,6 @@
 // O(n) time | O(n) space
 function twoNumSum(array, targetSum) {
-  // create an output array
-  let sumPair = [];
+  // save previously seen nums
   let prevNums = {};
 	
 	// iterate through the input array
@@ -9,18 +8,18 @@ function twoNumSum(array, targetSum) {
     let deficit = targetSum - num;
     
     if (deficit in prevNums) {
-      sumPair.push(deficit, num);
-      return sumPair;
+      return [deficit, num];
     } else {
       prevNums[num] = num;
     }
   }
   
-  // return output array
-  return sumPair;
+  // return empty array if no pair is found
+  return [];
 }
 
-let array = [3, 5, -4, 8, 11, 1, -1, 6];
-let targetSum = 10;
+// Testing
+let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let targetSum = 17;
 
 console.log(twoNumSum(array, targetSum));
