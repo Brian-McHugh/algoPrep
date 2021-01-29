@@ -17,6 +17,11 @@ def first_unique_char(s):
   for char in s:
     if chars[char] == 1:
       return char
+      
+  # if we needed the index of the unique char
+  #for i, char in enumerate(s):
+    #if chars[char] == 1:
+      #return i
             
   return '_'
 
