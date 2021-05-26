@@ -7,13 +7,12 @@ Consideration: this algo must iterate twice
 def selection_sort(array):
   
   for i in range(len(array) - 1):
-    current_num = array[i]
     lowest_num = array[i]
     lowest_num_idx = i
     
     for j in range(i + 1, len(array)):
       next_num = array[j]
-      if array[j] < lowest_num:
+      if next_num < lowest_num:
         lowest_num = array[j]
         lowest_num_idx = j
         
