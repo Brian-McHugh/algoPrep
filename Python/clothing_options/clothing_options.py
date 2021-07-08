@@ -1,42 +1,48 @@
-
-
-# O() time | O() space
+'''
+I: arrays of prices for a given category of clothing
+I: budget for total spending
+O: return the total number of possible clothing combinations a
+C: one item from each clothing category must be purchased
+'''
 def clothing_options(jeans, shoes, skirts, tops, budget):
 
-    jeans_shoes = []
-    skirts_tops = []
-    options = 0
-
-    for jean in jeans:
-        for shoe in shoes:
-            combo = jean + shoe
-            jeans_shoes.append(combo)
+  jeans_shoes = []
+  skirts_tops = []
+  options = 0
+    
+  # create list of cost of buying one pair of jeans and one pair of shoes
+  for jean in jeans:
+    for shoe in shoes:
+      combo = jean + shoe
+      jeans_shoes.append(combo)
 
     jeans_shoes.sort()
+    
+  # create list of cost of buying one skirt and one top
+  for skirt in skirts:
+    for top in tops:
+      outfit = skirt + top
+      skirts_tops.append(outfit)
+    
+  # sort combined list
+  skirts_tops.sort()
+  # reverse the sorted list to get descending order
+  skirts_tops.reverse()
+    
+  cap = 0
 
-    for skirt in skirts:
-        for top in tops:
-            outfit = skirt + top
-            skirts_tops.append(outfit)
+  for price in jeans_shoes:
+    remaining_budget = budget - price
 
-    skirts_tops.sort()
-    skirts_tops = skirts_tops[::-1]
+    while cap < len(skirts_tops) and skirts_tops[cap] > remaining_budget:
+      cap += 1
 
-    cap = 0
+      if cap == len(skirts_tops):
+        break
 
-    for price in jeans_shoes:
-        #cap = 0
-        remaining_budget = budget - price
+    options += len(skirts_tops) - cap
 
-        while cap < len(skirts_tops) and skirts_tops[cap] > remaining_budget:
-            cap += 1
-
-        if cap == len(skirts_tops):
-            break
-
-        options += len(skirts_tops) - cap
-
-    return options
+  return options
 
 # Testing
 jeans = [2, 3]
@@ -46,3 +52,4 @@ tops = [2, 1]
 budget = 10
 
 print(clothing_options(jeans, shoes, skirts, tops, budget))
+# output >>> 4
